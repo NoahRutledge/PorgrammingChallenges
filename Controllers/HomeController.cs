@@ -5,6 +5,8 @@ using System.Diagnostics;
 namespace CodeChecker.Controllers
 {    public class HomeController : Controller
     {
+        private ChallengeList _challengeList = new ChallengeList();
+
         //private readonly ILogger<HomeController> _logger;
 
         //public HomeController(ILogger<HomeController> logger)
@@ -14,7 +16,8 @@ namespace CodeChecker.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            // Ideally pull from a database an IEnumerable of challenges to show in a table and pass to View();
+            return View(_challengeList.GetRefreshedChallengeList());
         }
 
         public IActionResult Privacy()

@@ -1,8 +1,28 @@
-﻿@{
+﻿@model List<Challenge>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to Programming Challenges!</h1>
+    <table class="table mt-5">
+        <thead>
+            <tr>
+                <th>Difficulty</th>
+                <th>Challenge Name</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Challenge challenge in Model)
+            {
+                <tr>
+                    <td>@challenge.Difficulty</td>
+                    <td>@challenge.Name</td>
+                    <td>@challenge.Status.GetDescription()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

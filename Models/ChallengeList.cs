@@ -2,17 +2,17 @@
 {
     public class ChallengeList
     {
-        private List<Challenge> _allChallenges = new List<Challenge>();
+        private List<ChallengeBasicInfo> _allChallengesBasicInfo = new List<ChallengeBasicInfo>();
 
-        public List<Challenge> GetRefreshedChallengeList()
+        public List<ChallengeBasicInfo> GetRefreshedChallengeBasicInfoList()
         {
-            if(_allChallenges.Count() == 0)
-                _allChallenges.Add(new Challenge("Noah", "Fizzbuzz", "1.0", "You know fizzbuzz"));
+            if(_allChallengesBasicInfo.Count() == 0)
+                _allChallengesBasicInfo.Add(new ChallengeBasicInfo(1, "Fizzbuzz", "1.0"));
             //DB grab
-            return _allChallenges;
+            return _allChallengesBasicInfo;
         }
 
-        public void PostNewChallenge(Challenge aNewChallenge)
+        public void PostNewChallenge(ChallengeFullInfo aNewChallenge)
         {
             //DB post
         }

@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 
 namespace CodeChecker.Models
 {
@@ -39,23 +40,38 @@ namespace CodeChecker.Models
         }
     }
 
-    public class Challenge
-    {
-        public Challenge(string anAuthorName, string aChallengeName, string aDifficulty, string aDescription)
+    /// <summary>
+    /// Minimal info needed to display and find a challenge.  Shown on main page.
+    /// </summary>
+    public class ChallengeBasicInfo
+    { 
+        public ChallengeBasicInfo(int anId, string aChallengeName, string aDifficulty)
         {
-            Author = anAuthorName;
+            Id = anId;
             Name = aChallengeName;
             Difficulty = aDifficulty;
-            Description = aDescription;
         }
+
         public string Name { get; private set; } = "";
-        
         // Enforce being a number in field
         public string Difficulty { get; private set; } = "0.0";
+        public int Id = 0;
 
         // This is to make initial testing easier and should be individualized to the user and not a value associated with the challenge
         public ChallengeStatus Status { get; private set; } = ChallengeStatus.NotSubmitted;
-        
+    }
+
+    /// <summary>
+    /// The full class info needed to show the user how to complete the challenge
+    /// </summary>
+    public class ChallengeFullInfo : ChallengeBasicInfo
+    {
+        public ChallengeFullInfo(int anId, string aChallengeName, string aDifficulty, string anAuthor, string aDescription) : base(anId, aChallengeName, aDifficulty)
+        {
+            Author = anAuthor;
+            Description = aDescription;
+        }
+
         public string Author { get; private set; } = "";
         public string Description { get; private set; } = "";
     }

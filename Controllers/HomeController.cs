@@ -5,12 +5,15 @@ using System.Diagnostics;
 namespace CodeChecker.Controllers
 {    public class HomeController : Controller
     {
-        private ChallengeList _challengeList = new ChallengeList();
-
+        private readonly CodecheckerContext _context;
+        public HomeController(CodecheckerContext aContext)
+        {
+            _context = aContext;
+        }
 
         public IActionResult Index()
         {
-            return View(_challengeList.GetRefreshedChallengeBasicInfoList());
+            return View(_context.ChallengeData.ToList());
         }
 
         public IActionResult Privacy()

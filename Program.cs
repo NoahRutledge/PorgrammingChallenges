@@ -1,7 +1,13 @@
+using CodeChecker.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<CodecheckerContext>(options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
+
 
 WebApplication app = builder.Build();
 

@@ -1,4 +1,4 @@
-﻿@model int
+﻿@model ChallengeFullInfo
 
 @{
     ViewData["Title"] = "Home Page";
@@ -7,8 +7,10 @@
 <div class="text-center">
     <h1 class="display-4">Welcome to Programming Challenges!</h1>
     <ul>
-        <li>TODO: Get current challenge with id of @Model
-
-        </li>
+        <li>TODO: Get current challenge with id of @Model.Id</li>
+        <li>@Model.ChallengeName</li>
+        <li>@Model.DifficultyFancyFormat()</li>
+        <li>@Model.Description</li>
+        <li>@Model.AuthorName</li>
     </ul>
 </div>

@@ -4,20 +4,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CodeChecker.Models;
 
-public partial class CodecheckerContext : DbContext
+public partial class DatabaseContext : DbContext
 {
-    public CodecheckerContext()
-    {
-    }
+    public DbSet<ChallengeFullInfo> ChallengeData { get; set; }
+    public DbSet<ChallengeTestCase> ChallengeTestCases { get; set; }
 
-    public CodecheckerContext(DbContextOptions<CodecheckerContext> options)
-        : base(options)
-    {
-    }
+    public DatabaseContext() { }
 
-    public virtual DbSet<ChallengeFullInfo> ChallengeData { get; set; }
-
-    public virtual DbSet<ChallengeTestCase> ChallengeTestCases { get; set; }
+    public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

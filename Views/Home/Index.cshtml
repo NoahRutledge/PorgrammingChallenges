@@ -1,4 +1,4 @@
-﻿@model List<ChallengeFullInfo>
+﻿@model IEnumerable<ChallengeBaseInfo>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -11,16 +11,16 @@
             <tr>
                 <th>Difficulty</th>
                 <th>Challenge Name</th>
-                <th>Author Name</th>
+                <th>Challenge Id</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (ChallengeFullInfo challenge in Model)
+            @foreach (ChallengeBaseInfo challenge in Model)
             {
                 <tr class="body" onclick="location.href='@Url.ActionLink("Display", "Challenge", new { aChallengeId = challenge.Id })'">
-                    <td>@challenge.Difficulty</td>
+                    <td>@challenge.DifficultyFancyFormat()</td>
                     <td>@challenge.ChallengeName</td>
-                    <td>@challenge.AuthorName</td>
+                    <td>@challenge.Id</td>
                 </tr>
             }
         </tbody>

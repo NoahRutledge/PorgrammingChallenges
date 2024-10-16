@@ -45,6 +45,21 @@ namespace CodeChecker.Models
         public int Id { get; set; }
         public string ChallengeName { get; set; } = null;
         public double Difficulty { get; set; }
+
+
+        public ChallengeBaseInfo() { }
+
+        public ChallengeBaseInfo(int anId, string aChallengeName, double aDifficulty)
+        {
+            Id = anId;
+            ChallengeName = aChallengeName;
+            Difficulty = aDifficulty;
+        }
+
+        public string DifficultyFancyFormat()
+        {
+            return string.Format("{0:0.0}", Difficulty);
+        }
     }
 
     public partial class ChallengeFullInfo : ChallengeBaseInfo

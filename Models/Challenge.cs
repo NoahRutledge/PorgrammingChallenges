@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
 
 namespace CodeChecker.Models
 {
@@ -40,39 +40,17 @@ namespace CodeChecker.Models
         }
     }
 
-    /// <summary>
-    /// Minimal info needed to display and find a challenge.  Shown on main page.
-    /// </summary>
-    public class ChallengeBasicInfo
-    { 
-        public ChallengeBasicInfo(int anId, string aChallengeName, string aDifficulty)
-        {
-            Id = anId;
-            Name = aChallengeName;
-            Difficulty = aDifficulty;
-        }
-
-        public string Name { get; private set; } = "";
-        // Enforce being a number in field
-        public string Difficulty { get; private set; } = "0.0";
-        public int Id = 0;
-
-        // This is to make initial testing easier and should be individualized to the user and not a value associated with the challenge
-        public ChallengeStatus Status { get; private set; } = ChallengeStatus.NotSubmitted;
+    public class ChallengeBaseInfo
+    {
+        public int Id { get; set; }
+        public string ChallengeName { get; set; } = null;
+        public double Difficulty { get; set; }
     }
 
-    /// <summary>
-    /// The full class info needed to show the user how to complete the challenge
-    /// </summary>
-    public class ChallengeFullInfo : ChallengeBasicInfo
+    public partial class ChallengeFullInfo : ChallengeBaseInfo
     {
-        public ChallengeFullInfo(int anId, string aChallengeName, string aDifficulty, string anAuthor, string aDescription) : base(anId, aChallengeName, aDifficulty)
-        {
-            Author = anAuthor;
-            Description = aDescription;
-        }
+        public string AuthorName { get; set; } = null!;
 
-        public string Author { get; private set; } = "";
-        public string Description { get; private set; } = "";
+        public string Description { get; set; } = null!;
     }
 }

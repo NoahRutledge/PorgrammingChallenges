@@ -15,13 +15,13 @@ public partial class CodecheckerContext : DbContext
     {
     }
 
-    public virtual DbSet<ChallengeDatum> ChallengeData { get; set; }
+    public virtual DbSet<ChallengeFullInfo> ChallengeData { get; set; }
 
     public virtual DbSet<ChallengeTestCase> ChallengeTestCases { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<ChallengeDatum>(entity =>
+        modelBuilder.Entity<ChallengeFullInfo>(entity =>
         {
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.AuthorName)

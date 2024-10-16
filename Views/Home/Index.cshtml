@@ -1,4 +1,4 @@
-﻿@model List<ChallengeDatum>
+﻿@model List<ChallengeFullInfo>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -15,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (ChallengeDatum challenge in Model)
+            @foreach (ChallengeFullInfo challenge in Model)
             {
                 <tr class="body" onclick="location.href='@Url.ActionLink("Display", "Challenge", new { aChallengeId = challenge.Id })'">
                     <td>@challenge.Difficulty</td>

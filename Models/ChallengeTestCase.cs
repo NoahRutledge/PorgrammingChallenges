@@ -9,5 +9,5 @@ public partial class ChallengeTestCase
 
     public string TestCases { get; set; } = null!;
 
-    public virtual ChallengeDatum IdNavigation { get; set; } = null!;
+    public virtual ChallengeFullInfo IdNavigation { get; set; } = null!;
 }

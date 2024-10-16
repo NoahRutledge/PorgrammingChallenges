@@ -1,5 +1,6 @@
 using CodeChecker.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace CodeChecker.Controllers

@@ -20,7 +20,3 @@ html {
 body {
   margin-bottom: 60px;
 }
-
-#MainTable tr.body:hover{
-    background-color: lightyellow;
-}

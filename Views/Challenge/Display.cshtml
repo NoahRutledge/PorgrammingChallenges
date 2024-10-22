@@ -3,14 +3,51 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+@section CustomStyle
+{
+    <style>
+        #ChallengeDisplay{
+            border: solid black;
+            border-width: thin;
+            border-radius: 25px;
+            background-color: lightyellow;
+        }
+        #DifficultyBubble
+        {
+            background-color: lightgreen;
+            margin-top: 10%;
+            border-radius: 30px;
+            padding: 10px 30px;
+            display:inline-block;
+        }
+        #ChallengeDescription
+        {
+            padding: 0px 3%;
+        }
+    </style>
+}
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to Programming Challenges!</h1>
-    <ul>
-        <li>TODO: Get current challenge with id of @Model.Id</li>
-        <li>@Model.ChallengeName</li>
-        <li>@Model.DifficultyFancyFormat()</li>
-        <li>@Model.Description</li>
-        <li>@Model.AuthorName</li>
-    </ul>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8" id="ChallengeDisplay">
+            <div class="row">
+                <div style="width: 66.66666667%;">
+                    <h1 class="display-4">@Model.ChallengeName</h1>
+                    <h6 style="padding-left: 15px">Submitted by: @Model.AuthorName</h6>
+                </div>
+                <div style="width: 33.33333333%;">
+                    <div class="float-end" id="DifficultyBubble">
+                        @Model.DifficultyFancyFormat()
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="row" id="ChallengeDescription">
+                <p>@Model.Description</p>
+            </div>
+        </div>
+        <div class="col-md-4" style="border:solid black;">
+            <ul><li>File submission goes here</li></ul>
+        </div>
+    </div>
 </div>

@@ -11,6 +11,7 @@
 *.sln.docstates
 
 appsettings*
+UploadedSubmissions/
 todo.txt
 
 # User-specific files (MonoDevelop/Xamarin Studio)

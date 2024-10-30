@@ -24,7 +24,7 @@
         <tbody>
             @foreach (ChallengeBaseInfo challenge in Model)
             {
-                <tr class="body" onclick="location.href='@Url.ActionLink("Display", "Challenge", new { aChallengeId = challenge.Id })'">
+                <tr class="body" onclick="location.href='@Url.ActionLink("ChallengeSubmission", "Challenge", new { aChallengeId = challenge.Id })'">
                     <td>@challenge.DifficultyFancyFormat()</td>
                     <td>@challenge.ChallengeName</td>
                     <td>@challenge.Id</td>

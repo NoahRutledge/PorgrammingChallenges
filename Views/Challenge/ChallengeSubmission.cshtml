@@ -31,6 +31,15 @@
             border-radius: 10px;
             margin-left: 15px;
         }
+        .Error
+        {
+            color: red;
+            font: italic;
+            text-align: center;
+            display: table;
+            margin: 0 auto;
+            height: 30px;
+        }
     </style>
 }
 
@@ -54,13 +63,14 @@
             </div>
         </div>
         <div class="col-md-3" id="Submission">
-            <br />
+            <div class="Error">@ViewBag.ErrorString</div>
+
             <h6>Accepted file types:</h6>
             <p><i>.cs | .cpp | .java | .py</i></p>
-            <form enctype="multipart/form-data" asp-action="SubmitFile" method="post">
+            <form enctype="multipart/form-data" asp-action="ChallengeSubmission" method="post">
                 <input type="file" asp-for="@Model.File" accept=".cs, .cpp, .java, .py" required/>
                 <input type="hidden" asp-for="@Model.Id" value="@ViewBag.ChallengeData.Id"/>
-                <input type="submit" value="Submit"/>
+                <input style="margin-top: 10px" type="submit" value="Submit"/>
             </form>
         </div>
     </div>

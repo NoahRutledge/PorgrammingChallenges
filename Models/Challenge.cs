@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
 namespace CodeChecker.Models
@@ -62,10 +63,16 @@ namespace CodeChecker.Models
         }
     }
 
-    public partial class ChallengeFullInfo : ChallengeBaseInfo
+    public class ChallengeFullInfo : ChallengeBaseInfo
     {
         public string AuthorName { get; set; } = null!;
 
         public string Description { get; set; } = null!;
+    }
+
+    public class ChallengeSubmission
+    {
+        public int Id { get; set; }
+        public required IFormFile File { get; set; }
     }
 }

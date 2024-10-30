@@ -1,8 +1,9 @@
-﻿@model ChallengeFullInfo
+﻿@model ChallengeSubmission
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = ViewBag.ChallengeData.ChallengeName;
 }
+
 @section CustomStyle
 {
     <style>
@@ -24,6 +25,12 @@
         {
             padding: 0px 3%;
         }
+        #Submission
+        {
+            background-color: lightgray;
+            border-radius: 10px;
+            margin-left: 15px;
+        }
     </style>
 }
 
@@ -32,22 +39,29 @@
         <div class="col-md-8" id="ChallengeDisplay">
             <div class="row">
                 <div style="width: 66.66666667%;">
-                    <h1 class="display-4">@Model.ChallengeName</h1>
-                    <h6 style="padding-left: 15px">Submitted by: @Model.AuthorName</h6>
+                    <h1 class="display-4">@ViewBag.ChallengeData.ChallengeName</h1>
+                    <h6 style="padding-left: 15px">Submitted by: @ViewBag.ChallengeData.AuthorName</h6>
                 </div>
                 <div style="width: 33.33333333%;">
                     <div class="float-end" id="DifficultyBubble">
-                        @Model.DifficultyFancyFormat()
+                        @ViewBag.ChallengeData.DifficultyFancyFormat()
                     </div>
                 </div>
             </div>
             <hr />
             <div class="row" id="ChallengeDescription">
-                <p>@Model.Description</p>
+                <p>@ViewBag.ChallengeData.Description</p>
             </div>
         </div>
-        <div class="col-md-4" style="border:solid black;">
-            <ul><li>File submission goes here</li></ul>
+        <div class="col-md-3" id="Submission">
+            <br />
+            <h6>Accepted file types:</h6>
+            <p><i>.cs | .cpp | .java | .py</i></p>
+            <form enctype="multipart/form-data" asp-action="SubmitFile" method="post">
+                <input type="file" asp-for="@Model.File" accept=".cs, .cpp, .java, .py" required/>
+                <input type="hidden" asp-for="@Model.Id" value="@ViewBag.ChallengeData.Id"/>
+                <input type="submit" value="Submit"/>
+            </form>
         </div>
     </div>
 </div>

@@ -10,6 +10,7 @@ namespace CodeChecker.Controllers
         public HomeController(DatabaseContext aContext)
         {
             _context = aContext;
+            ViewBag.Title = "Home Page";
         }
 
         public IActionResult Index()
